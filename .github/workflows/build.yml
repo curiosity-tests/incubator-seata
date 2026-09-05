@@ -57,7 +57,7 @@ on:
       - '**.md'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ inputs.leg || github.event_name }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 run-name: "build ${{ inputs.leg || 'push' }} ${{ inputs.racecar_run }}"
